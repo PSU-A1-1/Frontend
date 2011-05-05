@@ -2,7 +2,7 @@ package application;
 
 import java.util.*;
 
-public class CardHolder extends Observable {
+public class CardHolder {
 	
 	private int ID;
 	private String first_name;
