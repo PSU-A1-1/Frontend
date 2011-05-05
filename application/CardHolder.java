@@ -1,6 +1,5 @@
 package application;
 
-import java.util.*;
 
 public class CardHolder {
 	
@@ -11,9 +10,9 @@ public class CardHolder {
 	private int drinks;
 
 
-	public CardHolder(int ID, String first_name, String surname, int beers, int drinks, boolean active) {
+	public CardHolder(int ID, String first_name, String surname, int beers, int drinks, int active) {
 		
-		if(!active) {
+		if(active != 1) {
 			System.out.println("Card's not active, 'n stuff.");
 
 		} else {
@@ -23,8 +22,8 @@ public class CardHolder {
 			this.drinks = drinks;
 			
 			if(first_name == null) {
-				first_name = "Guest";
-				surname = "";
+				this.first_name = "Guest";
+				this.surname = "";
 			} else {
 				this.first_name = first_name;
 				this.surname = surname;
@@ -46,7 +45,11 @@ public class CardHolder {
 	}
 
 	public String getName() {
-		return first_name + surname;
+		return first_name + " " + surname;
 	}
+	
+	public boolean isGuest() {
+	    return first_name == "Guest";
+	   }
 	
 }

@@ -10,9 +10,9 @@ public class CopyOfMySQLAccessbackup {
 
         try
         {
-            String userName = "kasperhelweg_dk";
-            String password = "sql2211";
-            String url = "jdbc:mysql://kasperhelweg.dk.mysql/kasperhelweg_dk";
+            String userName = "root";
+            String password = "";
+            String url = "jdbc:mysql://localhost/stengade";
             Class.forName ("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection(url, userName, password);
             System.out.println ("Database connection established");
