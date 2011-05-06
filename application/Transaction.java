@@ -1,6 +1,8 @@
 package application;
 
-public class Transaction {
+import java.util.Observable;
+
+public class Transaction extends Observable {
     
     private CardHolder cardHolder;
     private int boughtBeers;
