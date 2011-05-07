@@ -15,12 +15,20 @@ public class Transaction extends Observable {
     }
     
     public void addBeer() {
-        if (boughtBeers < cardHolder.getBeers()) boughtBeers++;
+        if (boughtBeers < cardHolder.getBeers()) {
+        	boughtBeers++;
+        	setChanged();
+        	notifyObservers();
+        }
         else System.out.println("NO MOAR BEERS!");
     }
     
     public void addDrink() {
-        if (boughtDrinks < cardHolder.getDrinks()) boughtDrinks++;
+        if (boughtDrinks < cardHolder.getDrinks()) {
+        	boughtDrinks++;
+        	setChanged();
+        	notifyObservers();
+        }
         else System.out.println("NO MOAR DRINKS!");
     }
     
@@ -43,6 +51,8 @@ public class Transaction extends Observable {
     public void reset() {
         boughtBeers = 0;
         boughtDrinks = 0;
+        setChanged();
+        notifyObservers();
     }
     
     public int getID() {
