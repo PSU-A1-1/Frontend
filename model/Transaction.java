@@ -1,4 +1,4 @@
-package application;
+package model;
 
 import java.util.Observable;
 
@@ -20,7 +20,6 @@ public class Transaction extends Observable {
         	setChanged();
         	notifyObservers();
         }
-        else System.out.println("NO MOAR BEERS!");
     }
     
     public void addDrink() {
@@ -29,7 +28,6 @@ public class Transaction extends Observable {
         	setChanged();
         	notifyObservers();
         }
-        else System.out.println("NO MOAR DRINKS!");
     }
     
     public int getBoughtBeers() {

@@ -1,8 +1,12 @@
-package application;
+package control;
 
 import java.sql.*;
 
-import application.CardHolder;
+import view.DBErrorDialog;
+
+import model.CardHolder;
+import model.Transaction;
+
 
 public class DBConnection {
     
@@ -39,8 +43,9 @@ public class DBConnection {
         }
         catch (Exception e)
         {
-            System.err.println ("Cannot connect to database server");
-            System.out.print(e.getCause());
+            //System.err.println ("Cannot connect to database server");
+            //System.out.print(e.getCause());
+            new DBErrorDialog();
             return null;
         }
         finally
@@ -50,7 +55,7 @@ public class DBConnection {
                 try
                 {
                     conn.close ();
-                    System.out.println ("Database connection terminated");
+                    //System.out.println ("Database connection terminated");
                 }
                 catch (Exception e) { /* ignore close errors */ }
             }
@@ -77,11 +82,11 @@ public class DBConnection {
             psCardHolder.setInt(1, transaction.getNewBeers());
             psCardHolder.setInt(2, transaction.getNewDrinks());
             psCardHolder.setInt(3, transaction.getID());
-            int statusCH = psCardHolder.executeUpdate();
+            /*int statusCH = */ psCardHolder.executeUpdate();
             
-            if (statusCH < 1) System.out.println("CARDHOLDER: Something went wrong, no rows were altered.");
-            if (statusCH == 1) System.out.println("CARDHOLDER: Something went good, 1 row was altered!");
-            if (statusCH > 1) System.out.println("CARDHOLDER: Something went REALLY wrong! Many rows where altered!!!");
+            //if (statusCH < 1) System.out.println("CARDHOLDER: Something went wrong, no rows were altered.");
+            //if (statusCH == 1) System.out.println("CARDHOLDER: Something went good, 1 row was altered!");
+            //if (statusCH > 1) System.out.println("CARDHOLDER: Something went REALLY wrong! Many rows where altered!!!");
             
             PreparedStatement psTransaction = conn.prepareStatement("INSERT INTO `stengade`.`transaction` "
                     + "(`ST-ID` ,`beers` ,`drinks` ,`time`) "
@@ -90,16 +95,16 @@ public class DBConnection {
             psTransaction.setInt(1, transaction.getID());
             psTransaction.setInt(2, transaction.getBoughtBeers());
             psTransaction.setInt(3, transaction.getBoughtDrinks());
-            int statusT = psTransaction.executeUpdate();
+            /*int statusT =*/ psTransaction.executeUpdate();
             
-            if (statusT < 1) System.out.println("TRANSACTION: Something went wrong, no rows were altered.");
-            if (statusT == 1) System.out.println("TRANSACTION: Something went good, 1 row was altered!");
-            if (statusT > 1) System.out.println("TRANSACTION: Something went REALLY wrong! Many rows where altered!!!");
+            //if (statusT < 1) System.out.println("TRANSACTION: Something went wrong, no rows were altered.");
+            //if (statusT == 1) System.out.println("TRANSACTION: Something went good, 1 row was altered!");
+            //if (statusT > 1) System.out.println("TRANSACTION: Something went REALLY wrong! Many rows where altered!!!");
         }
         catch (Exception e)
         {
-            System.err.println ("Cannot connect to database server");
-            System.out.print(e.getCause());
+            //System.err.println ("Cannot connect to database server");
+            //System.out.print(e.getCause());
         }
         finally
         {
@@ -108,7 +113,7 @@ public class DBConnection {
                 try
                 {
                     conn.close ();
-                    System.out.println ("Database connection terminated");
+                    //System.out.println ("Database connection terminated");
                 }
                 catch (Exception e) { /* ignore close errors */ }
             }

@@ -1,4 +1,4 @@
-package application;
+package model;
 
 
 public class CardHolder {
@@ -8,18 +8,17 @@ public class CardHolder {
 	private String surname;
 	private int beers;
 	private int drinks;
+	private int active;
 
 
 	public CardHolder(int ID, String first_name, String surname, int beers, int drinks, int active) {
 		
-		if(active != 1) {
-			System.out.println("Card's not active, 'n stuff.");
-
-		} else {
+	
 			
 			this.ID = ID;
 			this.beers = beers;
 			this.drinks = drinks;
+			this.active = active;
 			
 			if(first_name == null) {
 				this.first_name = "Guest";
@@ -28,7 +27,7 @@ public class CardHolder {
 				this.first_name = first_name;
 				this.surname = surname;
 			}
-		}
+		
 	}
 	
 	public int getID() {		
@@ -51,5 +50,9 @@ public class CardHolder {
 	public boolean isGuest() {
 	    return first_name == "Guest";
 	   }
+	
+	public boolean isActive() {
+		return active == 1;
+	}
 	
 }

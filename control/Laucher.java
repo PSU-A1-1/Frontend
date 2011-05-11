@@ -1,4 +1,6 @@
-package application;
+package control;
+
+import view.ScanView;
 
 public class Laucher {
 
