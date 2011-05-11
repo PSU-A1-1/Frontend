@@ -47,11 +47,11 @@ public class TransactionView extends JFrame implements Observer {
 	 * Create the frame.
 	 */
 	public TransactionView(CardHolder cardHolder) {
-		setVisible(false);
 		setBackground(Color.LIGHT_GRAY);
 		transaction = new Transaction(cardHolder);
 		transaction.addObserver(this);
 		createFrame();
+		setVisible(true);
 	}
 	
 	public void update(Observable tr, Object obj) {
@@ -274,7 +274,6 @@ public class TransactionView extends JFrame implements Observer {
     		});
 		middlePane.add(drinkButton);
 		
-		setVisible(true);
 	}
 		
 }

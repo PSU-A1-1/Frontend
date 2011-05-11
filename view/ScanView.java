@@ -123,6 +123,11 @@ public class ScanView extends JFrame{
 		scanPanel.add(IDField);
 		IDField.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		IDField.setColumns(10);
+		IDField.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) { 
+        		scanID(); 
+        		IDField.requestFocusInWindow(); }
+    	});
 		
 		JButton scanButton = new JButton("SCAN!");
 		scanPanel.add(scanButton);
@@ -133,7 +138,6 @@ public class ScanView extends JFrame{
         		scanID(); 
         		IDField.requestFocusInWindow(); }
     	});
-		IDField.requestFocusInWindow();
 		
 		JPanel bottomPane = new JPanel();
 		bottomPane.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -165,6 +169,8 @@ public class ScanView extends JFrame{
 		JPanel topPanel = new JPanel();
 		topPanel.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(topPanel, BorderLayout.NORTH);
+		
+		IDField.requestFocusInWindow();
 	}
 
 }
